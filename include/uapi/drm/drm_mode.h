@@ -102,6 +102,9 @@ extern "C" {
 #define  DRM_MODE_FLAG_SUPPORTS_RGB		(1<<23)
 #define  DRM_MODE_FLAG_SUPPORTS_YUV		(1<<24)
 #define  DRM_MODE_FLAG_SEAMLESS			(1<<31)
+#define  DRM_MODE_FLAG_VID_MODE_PANEL          (1<<29)
+#define  DRM_MODE_FLAG_CMD_MODE_PANEL          (1<<30)
+
 
 /* DPMS flags */
 /* bit compatible with the xorg definitions. */
