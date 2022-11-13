@@ -472,6 +472,9 @@ static int validate_hash_tree(struct backing_file_context *bfc, struct file *f,
 
 			if (zero)
 				pr_debug("incfs: Note saved_digest all zero - did you forget to load the hashes?\n");
+
+			if (page)
+				put_page(page);
 			return -EBADMSG;
 		}
 
