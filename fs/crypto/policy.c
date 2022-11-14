@@ -716,9 +716,10 @@ int fscrypt_set_test_dummy_encryption(struct super_block *sb,
 		goto out;
 	}
 
-	err = fscrypt_add_test_dummy_key(sb, &key_spec);
-	if (err)
-		goto out;
+// fix build after fsf2 merge / Claymore
+//	err = fscrypt_add_test_dummy_key(sb, &key_spec);
+//	if (err)
+//		goto out;
 
 	ctx->version = version;
 	switch (ctx->version) {
