@@ -2,14 +2,6 @@
 /*
  * Copyright 2019 Google LLC
  */
-#include <linux/gfp.h>
-#include <linux/types.h>
-#include <linux/slab.h>
-#include <linux/file.h>
-#include <linux/ktime.h>
-#include <linux/mm.h>
-#include <linux/workqueue.h>
-#include <linux/lz4.h>
 #include <linux/crc32.h>
 #include <linux/file.h>
 #include <linux/gfp.h>
