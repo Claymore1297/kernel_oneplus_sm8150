@@ -1228,8 +1228,20 @@ int sdhci_msm_execute_tuning(struct sdhci_host *host, u32 opcode)
 		return 0;
 
 	/*
+<<<<<<< HEAD
 	 * Don't allow re-tuning for CRC errors observed for any commands
 	 * that are sent during tuning sequence itself.
+=======
+	 * Clear tuning_done flag before tuning to ensure proper
+	 * HS400 settings.
+	 */
+	msm_host->tuning_done = 0;
+
+	/*
+	 * For HS400 tuning in HS200 timing requires:
+	 * - select MCLK/2 in VENDOR_SPEC
+	 * - program MCLK to 400MHz (or nearest supported) in GCC
+>>>>>>> 416b1c0ee25eee076b60103b202361f79e542bb0
 	 */
 	if (msm_host->tuning_in_progress)
 		return 0;
@@ -4515,6 +4527,7 @@ static struct sdhci_ops sdhci_msm_ops = {
 	.notify_load = sdhci_msm_notify_load,
 };
 
+//<<<<<<< HEAD
 static void sdhci_set_default_hw_caps(struct sdhci_msm_host *msm_host,
 		struct sdhci_host *host)
 {
@@ -4682,7 +4695,19 @@ static bool sdhci_msm_is_bootdevice(struct device *dev)
 	 */
 	return true;
 }
+/*=======
+static const struct sdhci_pltfm_data sdhci_msm_pdata = {
+	.quirks = SDHCI_QUIRK_BROKEN_CARD_DETECTION |
+		  SDHCI_QUIRK_NO_CARD_NO_RESET |
+		  SDHCI_QUIRK_SINGLE_POWER_WRITE |
+		  SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+		  SDHCI_QUIRK_MULTIBLOCK_READ_ACMD12,
 
+	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN,
+	.ops = &sdhci_msm_ops,
+};
+>>>>>>> 416b1c0ee25eee076b60103b202361f79e542bb0
+*/
 static int sdhci_msm_probe(struct platform_device *pdev)
 {
 	const struct sdhci_msm_offset *msm_host_offset;
